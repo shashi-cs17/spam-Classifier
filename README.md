@@ -2,9 +2,10 @@
 Ham amd Spam mail classification
 
 
-from version ver-0.0 , Datas after training...
+from version ver-0.0 , 
+Datas after training (Hyperparameters => (regularization param)lambda = 0; (#hidden_layer_units)SZ_H = 5; )...
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/shashi-cs17/spam-Classifier/blob/ver-0.0/dataAnalysis_ver-0.0.png)
 
 
 training data-set Analysis ---->
