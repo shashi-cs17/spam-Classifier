@@ -9,44 +9,46 @@ from version ver-0.0 , Datas after training...
 
 training data-set Analysis ---->
 
-                                    ground truth
+                                    ground truth (SPAM:HAM = 900:2100)
                              
                                  SPAM             HAM
                                             |
-                       SPAM                 |    
+                       SPAM       867       |      62    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM                 |
+                        HAM        33       |    2038
                                             |
                                             
 cross validation data-set Analysis ---->
 
-                                    ground truth
+                                    ground truth (SPAM:HAM = 300:700)
                              
                                  SPAM             HAM
                                             |
-                       SPAM                 |    
+                       SPAM       269       |      52    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM                 |
+                        HAM        31       |     648
                                             |
                                             
                                             
 test data-set Analysis ---->
 
-                                    ground truth
+                                    ground truth (SPAM:HAM = 300:700)
                              
                                  SPAM             HAM
                                             |
-                       SPAM                 |    
+                       SPAM       288       |      61    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM                 |
+                        HAM        12       |     639 
                                             |      
                                             
+                                            
+                                  test_set accuracy = 92.7%
                                             
                                             
                                             
