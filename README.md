@@ -14,11 +14,11 @@ training data-set Analysis ---->
                              
                                  SPAM             HAM
                                             |
-                       SPAM       867       |      62    
+                       SPAM       868       |      48    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM        33       |    2038
+                        HAM        32       |    2052
                                             |
                                             
 cross validation data-set Analysis ---->
@@ -27,11 +27,11 @@ cross validation data-set Analysis ---->
                              
                                  SPAM             HAM
                                             |
-                       SPAM       269       |      52    
+                       SPAM       268       |      27    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM        31       |     648
+                        HAM        32       |     673
                                             |
                                             
                                             
@@ -41,15 +41,15 @@ test data-set Analysis ---->
                              
                                  SPAM             HAM
                                             |
-                       SPAM       288       |      61    
+                       SPAM       281       |      48    
                                             |
         predicted              -------------|-------------
                                             |
-                        HAM        12       |     639 
+                        HAM        19       |     652 
                                             |      
                                             
                                             
-                                  test_set accuracy = 92.7%
+                                  test_set accuracy = 93.3%
                                             
                                             
                                             
