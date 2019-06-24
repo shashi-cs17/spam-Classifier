@@ -1,6 +1,7 @@
 # spam-Classifier
 Ham amd Spam mail classification
 
+More About Model ----> Model.txt
 
 from version ver-0.0 , 
 Datas after training (Hyperparameters => (regularization param)lambda = 0; (#hidden_layer_units)SZ_H = 5; )...
