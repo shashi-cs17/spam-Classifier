@@ -1,0 +1,41 @@
+              SPAM CLASSIFICATION -->
+        
+        Classifying mails to classes SPAM and HAM.
+          
+        Preprocessing -->
+          First, create a probability table of words describing 
+          P(wS) = P( mail is SPAM | word appears in mail) of words which appears in training set.
+          Notice that, P(wH) = P( mail is HAM | word appears in mail) = 1 - p(wS).
+        
+    Steps -->
+        1. Create a feature vector associated to given mail.
+        2. Train on the given dataset.
+        
+        Classifier is ready..
+        
+    1. Creating feature vector....
+    
+        Now, create Mail-vector(vector associated with a mail) of size SZ_M using
+        probability table created in preprocessing step.
+        From the given mail, choose SZ_M/2 words which have lowest probability in the table 
+        and SZ_M/2 words which have largest probability in the table.
+       
+        Feature vector :: 
+        
+                    -> first SZ_M/2 numbers will be P(wH) in Decreasing order for 
+                       every word which have the lowest value of P(wS) and appears in mail.
+                   
+                    -> last SZ_M/2 numbers will be P(wS) in decreasing order for 
+                       every word which have the larget value of P(wS) and appears in mail.
+                       
+                    -> if number of words in mail is less than SZ_M/2, then empty spaces 
+                       in feature vector will be filled by Zeros.
+        
+    2. Training model....
+    
+        After that, we will use a neural network of input layer of size SZ_M 
+        one hidden layer of size SZ_H and output layer of size two describing 
+        likeliness of a mail to be a HAM and SPAM.
+        
+        
+    This is fairly a simple model to build .
