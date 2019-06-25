@@ -1,35 +1,51 @@
+            ** big change from previous version
+             * small change from previous version
+              
+              
               SPAM CLASSIFICATION -->
         
         Classifying mails to classes SPAM and HAM.
-          
-        Preprocessing -->
+         
+        Preprocessing --> (SAME AS IN PREVIOUS VERSION)
           First, create a probability table of words describing 
           P(wS) = P( mail is SPAM | word appears in mail) of words which appears in training set.
           Notice that, P(wH) = P( mail is HAM | word appears in mail) = 1 - p(wS).
         
     Steps -->
-        1. Create a feature vector associated to given mail.
-        2. Train on the given dataset.
+      **1. Create a feature vector associated to given mail. (CHANGED FROM PREVIOUS ONE)
+       *2. Train on the given dataset. (ONLY HYPERPARAMETERS CHANGED)
         
         Classifier is ready..
         
-    1. Creating feature vector....
+   **1. Creating feature vector....
     
         Now, create Mail-vector(vector associated with a mail) of size SZ_M using
         probability table created in preprocessing step.
         From the given mail, choose SZ_M/2 words which have lowest probability in the table 
         and SZ_M/2 words which have largest probability in the table.
-       
-        Feature vector :: 
         
-                    -> first SZ_M/2 numbers will be P(wH) in Decreasing order for 
-                       every word which have the lowest value of P(wS) and appears in mail.
+      **These SZ_M/2 words are different from each other.
+        count(w) = # of times word w appears in the given mail.
+        #words = total # of words in the given mail.
+       
+      **Feature vector :: 
+        
+                  **-> first SZ_M/2 entries will be 
+                            (1+P(wH))*(count(w)+offset)/(#words + offset)
+                       in Decreasing order of P(wH) for every w word which appears in mail.
                    
-                    -> last SZ_M/2 numbers will be P(wS) in decreasing order for 
-                       every word which have the larget value of P(wS) and appears in mail.
+                  **-> second SZ_M/2 entries will be
+                            relevance*(1+P(wS))*(count(w)+offset)/(#words + offset)
+                       in Decreasing order of P(wS) for every word w which appears in mail.
+                            where, relevance = (count(w, whose P(wS)>=0.5)+offset)/(count(w, whose P(wS)<0.5)+offset).
                        
-                    -> if number of words in mail is less than SZ_M/2, then empty spaces 
-                       in feature vector will be filled by Zeros.
+                 **-> [(from previous version) if number of words in mail is less than SZ_M/2, then empty spaces 
+                       in feature vector will be filled by Zeros.]
+                       To avoid this case of filling zeros smoothing is used,The program of generating feature-vector
+                       will assume a word w whose P(wS)=P(wH)=count(w)=0, and then compute the corresponding entry as discussed.
+                       
+                       NOTE : Don't see P(wH) and P(wS) as probabiliity it will be confusing. See it as fraction of effort the 
+                              word w is making to change your desicion to HAM or SPAM respectively.
         
     2. Training model....
     
@@ -37,5 +53,7 @@
         one hidden layer of size SZ_H and output layer of size two describing 
         likeliness of a mail to be a HAM and SPAM.
         
+       *Changed only in implementation params to avoid underfitting problem.
         
-    This is fairly a simple model to build .
+        
+    This is somewhat more mathematical model to build ,and gave a considerable accuracy also.

@@ -1,6 +1,6 @@
-function theta = trainClassifier(X,y,lambda,SZ_H,iter)
+function [theta cost] = trainClassifier(X,y,lambda,SZ_H,iter)
   
-  epsilon = 0.25;
+  epsilon = 0.5;
   
   % @param(X) --> matrix whose i'th row represents i'th training input of length
   %               20.
@@ -12,6 +12,7 @@ function theta = trainClassifier(X,y,lambda,SZ_H,iter)
   initialTheta = rand(SZ,1)*(2*epsilon)-epsilon;
   costAndGrad = @(t) costAndGradFun(t, SZ_M, SZ_H, 2, X, y, lambda);
   
-  theta = fmincg(costAndGrad, initialTheta, options);
+  theta  = fmincg(costAndGrad, initialTheta, options);
+  cost = costAndGradFun(theta, SZ_M, SZ_H, 2, X, y, lambda);
   
 end
